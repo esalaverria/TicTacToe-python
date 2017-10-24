@@ -26,20 +26,36 @@ def get_first_player(p):
 
 
 def get_position(b):
-    valid_position = False
-    while not valid_position:
-        x = int(raw_input("Enter row number (1,2,3) :"))
-        while x not in [1, 2, 3]:
-            x = raw_input("Not a valid position for the row, try again:")
+    while True:
+        while True:
+            try:
+                x = int(raw_input("Enter row number (1,2,3) :"))
+                if x not in [1, 2, 3]:
+                    print "Not a valid position for the row, try again!"
+                    continue
+            except:
+                print "That's not a valid number!"
+                continue
+            else:
+                break
 
-        y = int(raw_input("Enter column number (1,2,3) :"))
-        while y not in [1, 2, 3]:
-            y = raw_input("Not a valid position for the column, try again:")
+        while True:
+            try:
 
-        if b[x-1][y-1] == ' ':
-            valid_position = True
-        else:
+                if y not in [1, 2, 3]:
+                    print "Not a valid position for the column, try again!"
+                    continue
+            except:
+                print "That's not a valid number!"
+            else:
+                break
+
+        if b[x-1][y-1] != ' ':
             print "That position was already taken, try again!\n"
+            continue
+        else:
+            break
+            
 
     return [x, y]
 
